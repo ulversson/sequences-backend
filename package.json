@@ -1,7 +1,5 @@
 {
   "name": "sequences-backend",
   "private": true,
-  "dependencies": {
-    "jquery": "^3.4.1"
-  }
+  "dependencies": {}
 }

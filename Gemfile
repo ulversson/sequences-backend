@@ -6,6 +6,7 @@ ruby '2.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -59,31 +60,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'administrate'
-gem 'bootstrap', '~> 4.0.0'
-gem 'bourbon'
-gem 'devise'
-gem 'devise_invitable'
-gem 'high_voltage'
-gem 'pg'
-gem 'pundit'
-
-group :development do
-  gem 'better_errors'
-  gem 'capistrano', '~> 3.0.1'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.1.0'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rvm', '~> 0.1.1'
-  gem 'hub', :require=>nil
-  gem 'rails_apps_pages'
-  gem 'rails_layout'
-end
-
-group :development, :test do
-  gem 'pry-rails'
-  gem 'pry-rescue'
-  gem 'rubocop'
-end
-
