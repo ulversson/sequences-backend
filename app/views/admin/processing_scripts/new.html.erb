@@ -1,0 +1,44 @@
+ <div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">Add new processing script</h3>
+        </div>
+
+        <div class="box-body">
+         <%= form_for @processing_script, url: "/admin/processing_scripts", html: {
+           onsubmit: "if ($('input#processing_script_file').val() === '') { alert('You must choose a file'); return false;}"
+         } do |f| %>
+            <div class="box-body col-4">
+              <h4>Please select a file</h4>
+          <p>
+            <div class="custom-file" id="customFile" lang="es">
+              <%= f.file_field :file, class: "custom-file-input "%>
+              <label class="custom-file-label" for="exampleInputFile">
+                Please select processing script file and click save below
+              </label>
+              <p>
+              <div class="custom-file">
+                <%= f.check_box :active, {}, value: "true", checked: false%>
+               <label>Make active</label>
+              </div>
+                <button type="submit" id="submit-form" 
+                class="btn bg-maroon btn-flat margin" 
+                >SAVE</button>
+              </p>
+             
+            </div>
+              
+          </p>
+         <% end %>
+        </div>
+
+        </div>
+    </div>
+</div>
+<%= content_for :added_scripts do %>
+<script type="text/javascript">
+
+<script>
+<% end %>

@@ -1,0 +1,8 @@
+development:
+  source_root: "/home/deployer/source"
+  target_root: "/home/deployer/target"
+  bash_script_path: "/home/deployer/bash.sh"
+production:
+  source_root: "/home/deployer/source"
+  target_root: "/home/deployer/target"
+  bash_script_path: "/home/deployer/bash.sh"

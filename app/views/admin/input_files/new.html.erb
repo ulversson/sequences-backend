@@ -1,0 +1,39 @@
+ <div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">Add new input file</h3>
+        </div>
+
+        <div class="box-body">
+         <%= form_for @input_file, url: admin_input_files_path, html: {
+           onsubmit: "if ($('input#input_file_file').val() === '') { alert('You must choose a file'); return false;}"
+         } do |f| %>
+            <div class="box-body col-4">
+              <h4>Please click button below to start</h4>
+          <p>
+            <div class="custom-file" id="customFile" lang="es">
+              <%= f.file_field :file, class: "custom-file-input "%>
+              <label class="custom-file-label" for="exampleInputFile">
+                Please select sequences file and click save below
+              </label>
+              <p>
+                <button type="submit" id="submit-form" 
+                class="btn bg-maroon btn-flat margin" 
+                >SAVE</button>
+              </p>
+
+            </div>
+          </p>
+         <% end %>
+        </div>
+
+        </div>
+    </div>
+</div>
+<%= content_for :added_scripts do %>
+<script type="text/javascript">
+
+<script>
+<% end %>

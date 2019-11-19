@@ -16,7 +16,7 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: sequences-backend_development
+  database: seq
   pool:     5
   username: seq
   password: seq

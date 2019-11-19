@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">List of Processing Scripts</h3>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Script</th>
+                      <th>Active?</th>
+                      <th>Uploaded</th>
+                      <th class="col-xs-1">Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @processing_scripts.each do |file| %>
+                      <tr>
+                        <td> <%= link_to file.file.filename.to_s, rails_blob_path(file.file, disposition: :attachment, only_path: true) %> </td>
+                        <td> <%=  file.active %> </td>
+                        <td> <%=l file.created_at, format: :long %> </td>
+                        <td>
+                          <div class="btn-row">
+                          <% unless file.active %>
+                            <%= link_to raw('<i class="fa fa-cog"></i>'), admin_processing_script_path(file), class: 'btn btn-sm btn-warning', method: :patch,
+                                            data: { confirm: 'Are you sure you want to activate this scirpt? (it will deactivate others)' } %>
+                          <% end %>
+                           <% unless @processing_scripts.pluck(:id).count == 1  %>
+                            <%= link_to raw('<i class="fa fa-trash"></i>'), admin_processing_script_url(file), class: 'btn btn-sm btn-danger', method: :delete,
+                                            data: { confirm: 'Are you sure you want to delete this element?' } %>
+                            <% end %>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+                  <tfoot>
+                    <tr role="row">
+                      <th>Name</th>
+                      <th>Active?</th>
+                      <th class="col-xs-1">Actions</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-10">
+    <%= link_to 'New Processign Script', new_admin_processing_script_path, class: 'btn btn-success pull-right' %>
+  </div>
+</div>
