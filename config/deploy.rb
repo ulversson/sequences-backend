@@ -12,7 +12,7 @@ if fetch(:stage) == :digital
 end  
 #set :rvm_custom_path, "/Users/ulversson/.rvm"  # only needed if not detected# set :format, :pretty
 
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml}
 
 namespace :deploy do
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.6.1'
+ruby '2.6.3'
 gem 'rails', '~> 5.2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -9,8 +9,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'adminlte-rails'
-gem 'doorkeeper'
-gem 'subprocess'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -36,11 +35,11 @@ gem 'pg'
 gem 'pundit'
 group :development do
   gem 'better_errors'
-  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails'
   gem 'capistrano-rails-console'
-  gem 'capistrano-rvm', '~> 0.1.1'
+  gem 'capistrano-rvm'
   gem 'hub', :require=>nil
   gem 'rails_layout'
 end
