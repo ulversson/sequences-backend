@@ -1,0 +1,34 @@
+   <div class="col col-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-file-text"></i></span>
+
+            <div class="info-box-content">
+              <strong class="info-box-text">
+              Output File:</strong>
+              <span class="info-box-number">
+                <%= link_to @processing_result.file.filename.to_s, rails_blob_path(@processing_result.file, disposition: :attachment, only_path: true) %>
+             </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><%= link_to  rails_blob_path(@processing_result.input_file.file, 
+                    disposition: :attachment, only_path: true)  do %>
+                    <%= @processing_result.input_file.file.filename.to_s %><span class="pull-right badge bg-blue">Input file</span>
+                <% end %>
+                </li>
+                <li><%= link_to  rails_blob_path(@processing_result.input_file.file, 
+                    disposition: :attachment, only_path: true) do %>
+                    <%= @processing_result.processing_script.file.filename.to_s %><span class="pull-right badge bg-aqua">Script</span>
+               <% end %></li>
+                <li><a href="#">Finished <span class="pull-right badge bg-green">
+                    <%= l @processing_result.created_at, format: :long %></span></a></li>
+                <li><a href="#">Success <span class="pull-right badge bg-info"><%= @processing_result.exit_code == 0 %></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>

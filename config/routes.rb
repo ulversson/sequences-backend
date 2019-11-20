@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :input_files, only: [:new, :create, :index, :destroy, :update]
       resources :processing_scripts, only: [:new, :create, :index, :destroy, :update]
-      resources :processing_results, only: [:new, :create, :index, :destroy, :update]
+      resources :processing_results
 
       resources :users
   

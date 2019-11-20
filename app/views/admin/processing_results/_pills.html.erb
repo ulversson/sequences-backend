@@ -1,0 +1,32 @@
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item active in">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#details" role="tab" aria-controls="pills-details" aria-selected="true">
+    Details</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#output" role="tab" aria-controls="pills-output" aria-selected="false">Processing Output</a>
+  </li>
+    <% if @processing_result.std_err != "" %>
+
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#error" role="tab" aria-controls="pills-error" aria-selected="false">Processing Errors</a>
+  </li>
+    <% end %>
+
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane active in"  
+    style="margin-top: 40px"  id="details" role="tabpanel" aria-labelledby="pills-home-tab">
+    <%= render "details"%>
+  </div>
+  <div class="tab-pane fade" 
+  style="margin-top: 40px" id="output" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <%= render "output"%>
+  </div>
+  <% if @processing_result.std_err != "" %>
+  <div class="tab-pane fade" 
+  style="margin-top: 40px" id="error" role="tabpanel" aria-labelledby="pills-contact-tab">
+    <%= render "error"%>
+  </div>
+  <% end %>
+</div>

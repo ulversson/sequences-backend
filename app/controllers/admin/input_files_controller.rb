@@ -26,6 +26,7 @@ class Admin::InputFilesController < Admin::ApplicationController
     end    
   end  
 
+
   private 
 
   def permitted_params

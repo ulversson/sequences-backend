@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">List of Processing Results</h3>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Script</th>
+                      <th>Finished</th>
+                      <th>Success</th>
+                      <th>Input File</th>
+                      <th>Script</th>
+                      
+                      <th class="col-xs-1">Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @processing_results.each do |res| %>
+                      <tr>
+                        <td> <%= link_to res.file.filename.to_s, rails_blob_path(res.file, disposition: :attachment, only_path: true) %> </td>
+                        <td> <%=l res.created_at, format: :long %> </td>
+                        <td> <%= res.exit_code  == 0 %> </td>
+                        <td> <%= link_to res.input_file.file.filename.to_s, rails_blob_path(res.input_file.file, disposition: :attachment, only_path: true)  %> </td>
+                        <td> <%= link_to res.processing_script.file.filename.to_s, rails_blob_path(res.processing_script.file, disposition: :attachment, only_path: true)  %> </td>
+                        <td>
+  
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-info-circle"></i>'), admin_processing_result_url(res), class: 'btn btn-sm btn-primary details-link',
+                              "data-id"=> res.id %>
+                          </div>
+                            <div class="btn-row">
+                      
+                              <%= link_to raw('<i class="fa fa-trash"></i>'), admin_processing_result_url(res), class: 'btn btn-sm btn-danger', method: :delete,
+                                            data: { confirm: 'Are you sure you want to remove this element?' } %>
+                            </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+                 
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+<div id="modal-container"></div>

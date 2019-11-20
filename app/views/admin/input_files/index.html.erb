@@ -27,7 +27,8 @@
                         <td> <%=l file.created_at, format: :long %> </td>
                         <td>
                           <div class="btn-row">
-                            <%= link_to raw('<i class="fa fa-cog"></i>'), edit_admin_user_url(file), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-cog"></i>'), admin_processing_results_url(id: file.id), class: 'btn btn-sm btn-warning', method: :post, 
+                            data: {confirm: 'Are you sure you want to process this file?' } %>
                             <%= link_to raw('<i class="fa fa-trash"></i>'), admin_input_file_url(file), class: 'btn btn-sm btn-danger', method: :delete,
                                             data: { confirm: 'Are you sure you want to delete this element?' } %>
                           </div>
