@@ -15,7 +15,7 @@ class Admin::ProcessingResultsController < Admin::ApplicationController
       if @processing_result.destroy
         redirect_to admin_processing_results_path, notice: "Processing Results has been successfully deleted"
       else
-        redirect_to admin_processing_results_path, error: "Processing Results to remove these results"
+        redirect_to admin_processing_results_path, error: "Unable to remove these results"
       end    
     end
     
