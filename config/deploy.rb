@@ -7,10 +7,7 @@ set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_i
 
 #set :linked_files, %w{config/database.yml}
 set :rvm_ruby_version, "2.6.3"      # Defaults to: "default"
-if fetch(:stage) == :digital
-  set :rvm_custom_path, "/usr/share/rvm"
-end  
-#set :rvm_custom_path, "/Users/ulversson/.rvm"  # only needed if not detected# set :format, :pretty
+set :rvm_custom_path, "/usr/share/rvm"
 
 set :linked_files, %w{config/database.yml}
 
