@@ -39,7 +39,7 @@ $(document).ready(function() {
 
     $(document).off("click.sm").on("click.sm", "a.details-link", function(e){
       e.preventDefault()
-      let id = $(this).data("id")
+      var id = $(this).data("id")
       $.get("/admin/processing_results/"+id, function(html){
         $("div#modal-container").html(html)
         $("div.modal[data-id='" +id + "']").modal("show")
