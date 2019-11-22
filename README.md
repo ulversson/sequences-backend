@@ -114,7 +114,7 @@ Now we can update apt and use it to install Node.js:
 
 ## Setting up the PostgreSQL Database for Rails Development
 
-In this step, we will prepare PostgreSQL for rails development. Ruby on Rails supports many databases such as MySQL, SQLite (Default) and PostgreSQL. We will use PostgreSQL as the database for this guide.
+In this step, we will prepare PostgreSQL for rails development. Ruby on Rails supports many databases such as MySQL, SQLite (Default) and PostgreSQL. We will use PostgreSQL with this app. 
 
 Install PostgreSQL and some other required packages with the apt command:
 
@@ -226,11 +226,21 @@ All of the above steps need to be completed in order to run the app on remote bo
 Additionally ssh-server needs to be installed with passwordless authentication (using ssh keys)
 On top of that -  nginx with passenger module needs to be installed (this module runs rails apps)
 
+
+
+
+
 Instructions for ubuntu
+
+
 
 [https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/ https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/
 
+
+
 Then you change `config/deploy.rb` settings by putting  different IP and host. 
+
+
 
 and after you run `cap production deploy` from your local box the installation script should install everything on remote server. 
 It will pull the source code from github, and setup everything automatically. 
