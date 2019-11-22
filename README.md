@@ -56,7 +56,7 @@ Then, install the specific version of Ruby that you need through RVM, where ruby
 Since in our case we are using ruby 2.6.3 
 We'll do it like that: 
 
-`rvm install 2.6.3`
+`rvm install ruby-2.6.3`
 
 We can switch between the Ruby versions by typing:
 
@@ -84,18 +84,30 @@ Like we did with the RVM script, we can move to a writable directory, verify the
 
  
 `cd /tmp`
+
+
 `\curl -sSL https://deb.nodesource.com/setup_10.x -o nodejs.sh`
+
+
 `less nodejs.sh`
+
+
 
 Once we are satisfied with the Node.js script, we can install the NodeSource Node.js v10.x repo:
 
 `cat /tmp/nodejs.sh | sudo -E bash -`
+
+
 The -E flag used here will preserve the user’s existing environment variables.
 
 Now we can update apt and use it to install Node.js:
 
 `sudo apt update`
+
+
 `sudo apt install -y nodejs`
+
+
 
 ## Setting up the PostgreSQL Database for Rails Development
 
@@ -104,20 +116,46 @@ In this step, we will prepare PostgreSQL for rails development. Ruby on Rails su
 Install PostgreSQL and some other required packages with the apt command:
 
 `apt-get -y install postgresql postgresql-contrib libpq-dev`
+
+
 When the installation is done, login to the postgres user and access the postgresql shell.
 
 `su - postgres`
+
+
 `psql`
+
+
 Give the postgres user a new password with command below:
 
 `\password postgres`
+
+
 `Enter new password:`
+
+
 `Next, create a new role named 'seq' for the rails app with the command below:
 
 `create user seq with createdb login password 'seq';`
+
+
 Set a new password for the user and check that the user has been created.
 
 Now check the new role and you will see new role has been created:
 
 `\du`
+
+
 The PostgreSQL database
+
+You quit PostgreSQL shell by typing `\q`
+
+## Cloning Repository to your local box.
+
+Having all the dependencies in place you only need to clone the github repository with source using the command below:
+
+`git clone https://github.com/ulversson/sequences-backend`
+
+
+
+
