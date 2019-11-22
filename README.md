@@ -140,7 +140,7 @@ Give the postgres user a new password with command below:
 `Enter new password:`
 
 
-`Next, create a new role named 'seq' and database for the rails app with the command below:
+`Next, create a new user named 'seq' and database for the rails app with the command below:
 
 `create user seq with password 'seq';`
 
@@ -165,7 +165,7 @@ Being in the root directory of the app you can type `bundle`
 that will download and install remaining app dependencies ( gems)
 The bundle command might take a while because it might compile some gems with native C bindings.
 
-If you get an error of command not found please run `gem install bunder`
+If you get an error of command not found please run `gem install bundler`
 
 
 Next step is to create database tables from migrations localted in `db/migrate` files. 
@@ -179,6 +179,15 @@ Finally - populate and setup database with defualt admin user by running:
 
 `rake db:seed`
 
+You can also create a script output directory - the one that will dump the files created by your bash script. 
+
+The defualt path is `/tmp/script_output`
+
+`mkdir -p /tmp/script_output`
+
+The name and path of this directory is configured in `config/application.rb` file so  you can change it and adjust accordingly. 
+
+
 Once all the above steps are done. you can run the app with 
 
 `bundle exec rails server` 
@@ -187,6 +196,30 @@ It will run on localhost nad port 3000, so you can open it from link
 
 [http://localhost:3000](http://localhost:3000)
 
+`bundle exec rails server` or short ``bundle exec rails s` is the only command required to run the app having all the dependencies installed
 
 ## Additional information
+
+Few words about the app and the config: 
+
+### Models and app console
+
+You can access the database console with `rails c` or `rails console` it will run an interactive shell (REPL - Read Eval Print Loop)
+Where you can run the ruby code interactively and find stuff. 
+Rails is following MVC design pattern (Model View Controller) and all its models are mapped to database tables localted in `app/models`
+You can find the `ProcessingResult` mapped to `processing_results` postgress table  or `ProcessingScript` or any of the models running for example
+(in the rails console)
+`ProcessingResult.find(2)` or `InputFile.last` or `InputFile.first` 
+I would recommend reading Active Record's documentation online. 
+
+### Database connection config. 
+
+Rails uses 3 environments by default (can be more)- `development` run locally, `test` for unit testing and `production` that runs live. 
+Database connection is configured in `config/database.yml` file per environemnt. 
+
+You can connect to different database locally (specified under developent section in the file) just by putting different host, username, and password there. You can also specify life connection on a different host. Please read Active Record's documentation for more details. 
+
+
+
+
 
