@@ -145,7 +145,7 @@ Give the postgres user a new password with command below:
 `create user seq with password 'seq';`
 
 
-`create database seq with owner=seq`
+`create database seq with owner=seq;`
 
 Now check the new role and you will see new role has been created:
 
