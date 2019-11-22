@@ -18,6 +18,6 @@ Rails.application.routes.draw do
                path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   
     # Application root
-    root to: "application#index"
+    root to: "admin/input_files#index"
     # Front routes end
 end
