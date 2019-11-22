@@ -214,12 +214,24 @@ I would recommend reading Active Record's documentation online.
 
 ### Database connection config. 
 
-Rails uses 3 environments by default (can be more)- `development` run locally, `test` for unit testing and `production` that runs live. 
+Rails uses 3 environments by default (can be more)- `development` executed locally, `test` for unit testing and `production` that runs live. 
 Database connection is configured in `config/database.yml` file per environemnt. 
 
-You can connect to different database locally (specified under developent section in the file) just by putting different host, username, and password there. You can also specify life connection on a different host. Please read Active Record's documentation for more details. 
+You can connect to a different database locally (specified under developent section in the file) just by putting different host, username, and password there. You can also specify live connection to a different host. Please read Active Record's documentation for more details. 
 
 
+# Deploying to a remote machine. 
 
+All of the above steps need to be completed in order to run the app on remote box. 
+Additionally ssh-server needs to be installed with passwordless authentication (using ssh keys)
+On top of that -  nginx with passenger module needs to be installed (this module runs rails apps)
 
+Instructions for ubuntu
+
+[https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/ https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/
+
+Then you change `config/deploy.rb` settings by putting  different IP and host. 
+
+and after you run `cap production deploy` from your local box the installation script should install everything on remote server. 
+It will pull the source code from github, and setup everything automatically. 
 
