@@ -1,7 +1,7 @@
 # Installing Rails stack on Ubuntu 18.04 (Should work also on 16.04)
 
 Rails framework and Ruby can be installed on Windows too
-but if you want to install it on Windows - I would highly recommend to install it using Ubuntu subsystem
+but if you want to install it on Windows - I would **highly recommend** to install it using Ubuntu subsystem
 [How to install ubuntu subsystem on Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10) 
 NOT The native installer because the a lot of scripts uses bash and for windows native installer there are plenty of workarounds to make things work. 
 
@@ -66,12 +66,15 @@ Since Rails is a gem (ruby dependency - equivalent of pip for python),
 we can also install various versions of Rails by using the gem command. 
 Let’s first list the valid versions of Rails by doing a search:
 
-gem search '^rails$' --all
+`gem search '^rails$' --all`
+
+
 Next, we can install our required version of Rails. Note that `rails_version` will only refer to the version number, as in 5.2.0.
 
 `gem install rails -v rails_version`
 
-For our project we need rails version 5.2.0
+
+For our project we need rails version `5.2.0`
 
 ## Install Javascript Runtime
 
@@ -102,12 +105,12 @@ The -E flag used here will preserve the user’s existing environment variables.
 
 Now we can update apt and use it to install Node.js:
 
+
+
 `sudo apt update`
 
 
 `sudo apt install -y nodejs`
-
-
 
 ## Setting up the PostgreSQL Database for Rails Development
 
@@ -115,10 +118,13 @@ In this step, we will prepare PostgreSQL for rails development. Ruby on Rails su
 
 Install PostgreSQL and some other required packages with the apt command:
 
+
+
 `apt-get -y install postgresql postgresql-contrib libpq-dev`
 
 
 When the installation is done, login to the postgres user and access the postgresql shell.
+
 
 `su - postgres`
 
@@ -134,28 +140,53 @@ Give the postgres user a new password with command below:
 `Enter new password:`
 
 
-`Next, create a new role named 'seq' for the rails app with the command below:
+`Next, create a new role named 'seq' and database for the rails app with the command below:
 
-`create user seq with createdb login password 'seq';`
+`create user seq with password 'seq';`
 
 
-Set a new password for the user and check that the user has been created.
+`create database seq with owner seq`
 
 Now check the new role and you will see new role has been created:
 
 `\du`
 
+You can quit PostgreSQL shell by typing `\q` and pressing enter
 
-The PostgreSQL database
-
-You quit PostgreSQL shell by typing `\q`
-
-## Cloning Repository to your local box.
+## Cloning Repository to your local box and running the app.
 
 Having all the dependencies in place you only need to clone the github repository with source using the command below:
 
 `git clone https://github.com/ulversson/sequences-backend`
 
+Now enter the directory with the app with `cd sequences-backend`
+
+Being in the root directory of the app you can type `bundle` 
+that will download and install remaining app dependencies ( gems)
+The bundle command might take a while because it might compile some gems with native C bindings.
+
+If you get an error of command not found please run `gem install bunder`
 
 
+Next step is to create database tables from migrations localted in `db/migrate` files. 
+
+
+You do it by running `rake db:migrate` from the main root directory.
+
+
+
+Finally - populate and setup database with defualt admin user by running:
+
+`rake db:seed`
+
+Once all the above steps are done. you can run the app with 
+
+`bundle exec rails server` 
+
+It will run on localhost nad port 3000, so you can open it from link 
+
+[http://localhost:3000](http://localhost:3000)
+
+
+## Additional information
 
